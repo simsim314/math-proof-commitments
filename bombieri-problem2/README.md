@@ -11,7 +11,7 @@ The source manuscripts themselves are kept private/local (in `sources/`, never c
 
 ## Mathematical claim
 
-Bombieri's Problem 2 asks: for a finite union of intervals $E\Subset(0,\infty)$, minimize Weil's quadratic functional $T[f*f^*]$ on the unit sphere of $L^2(E)$.
+Bombieri's Problem 2 asks: for a finite union of intervals $E\Subset(0,\infty)$, minimize Weil's quadratic functional $`T[f*f^*]`$ on the unit sphere of $L^2(E)$.
 
 The claimed theorem is that the minimum $\mathcal B(E)$ is determined exactly by explicit finite certified lower and upper bounds,
 
@@ -19,7 +19,7 @@ The claimed theorem is that the minimum $\mathcal B(E)$ is determined exactly by
 \mathcal B(E)=\sup_{c,N}L_{E,c,N}=\inf_N U_{E,N},
 ```
 
-so that for every effectively presented $E$ and every $\varepsilon>0$ one obtains finite rigorous bounds $L\le\mathcal B(E)\le U$ with $U-L<\varepsilon$. The analogous common-limit identity is claimed for the $k$th localized Weil eigenvalue, for every fixed $k\ge1$.
+so that for every effectively presented $E$ and every $\varepsilon>0$ one obtains finite rigorous bounds $L\le\mathcal B(E)\le U$ with $U-L<\varepsilon$. The analogous common-limit identity is claimed for the $`k`$-th localized Weil eigenvalue, for every fixed $k\ge1$.
 
 A companion manuscript applies the same exact-symbol capping machinery to the finite-window spectral theory of the localized Weil operator $A_a$ on $(-a,a)$: certified approximation of the canonical deficiency vectors and of the characteristic entire function $W(a,\lambda,\theta;z)$, and a proof (without assuming the Riemann Hypothesis) that the Fourier image of $\mathcal H(T_a)$ is a de Branges space for every $\lambda<\lambda_a$. These are finite-window statements; no large-window limit or Riemann Hypothesis is assumed or claimed.
 
