@@ -1,5 +1,23 @@
-files/**
-!files/
-!files/**/
-!files/**/*.sha256
-!files/**/*.ots
+# Whitelist: everything is ignored unless explicitly allowed below.
+# Private sources (*/sources/) and any .tex/.pdf/etc. can never be committed.
+
+/*
+!/.gitignore
+!/README.md
+!/commit_new_files.sh
+!/stamp_new_files.sh
+
+# Project folders: only README.md and commitments/ are public.
+!/*/
+/*/*
+!/*/README.md
+!/*/commitments/
+
+# Inside commitments/: only OpenTimestamps proofs and the hash list.
+/*/commitments/**
+!/*/commitments/**/
+!/*/commitments/**/*.ots
+!/*/commitments/SHA256SUMS
+
+# Explicit, redundant guard.
+sources/

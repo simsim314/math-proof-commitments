@@ -1,89 +1,45 @@
-# lattice-sphere-packing-proof-commitment
+# math-proof-commitments
 
-Public timestamp and SHA-256 commitment for candidate proofs of improved lattice sphere-packing lower bounds, including the full $\kappa=1$ logarithmic gain.
+Public timestamps and SHA-256 commitments for mathematical work by Michael Simkin.
 
-**Author / originator:** Michael Simkin  
-**Initial public commitment:** September 11, 2026
+The source manuscripts are kept private. Each project folder publishes only:
 
-This repository records public cryptographic commitments to mathematical work concerning lower bounds for lattice sphere packing.
+- `commitments/SHA256SUMS`: the SHA-256 digest of every committed source file;
+- `commitments/*.ots`: an [OpenTimestamps](https://opentimestamps.org) proof for each file, anchored in the Bitcoin blockchain.
 
-The source manuscripts themselves are kept private/local. For each committed source file, the repository publishes:
+When a source file is revealed later, anyone can check that its contents match the commitment and existed no later than the timestamp.
 
-- a `.sha256` file containing its SHA-256 digest;
-- an `.ots` OpenTimestamps proof.
+<!-- BEGIN AUTO PROJECT LIST -->
 
-These artifacts allow the exact source file to be revealed later and cryptographically checked against the earlier public commitment.
+## Projects
 
-## Mathematical claim
+- [Lattice sphere packing](lattice-sphere-packing/)
 
-The work concerns the progression
+<!-- END AUTO PROJECT LIST -->
 
-```math
-\kappa=\frac{1}{1+e},
+## Layout
+
 ```
-
-then constructions approaching
-
-```math
-\kappa=1-\varepsilon,
+<project>/
+├── README.md        claim and table of committed files
+├── sources/         private originals — never committed (gitignored)
+└── commitments/
+    ├── SHA256SUMS
+    └── <file>.ots
 ```
-
-and finally a candidate full $\kappa=1$ construction yielding
-
-```math
-\Delta_d^L \ge c\,d^2\log\log d\,2^{-d}.
-```
-
-More precisely, for a positive integer $d$, let $\Delta_d^L$ denote the maximum density of a lattice sphere packing in $d$-dimensional Euclidean space.
-
-The claimed theorem is:
-
-> There exist universal constants $c>0$ and $d_0$ such that, for every integer $d\ge d_0$,
->
-> ```math
-> \Delta_d^L \ge c\,d^2\log\log d\,2^{-d}.
-> ```
-
-This is the full logarithmic gain, corresponding to $\kappa=1$ in the notation
-
-```math
-(\log\log d)^\kappa.
-```
-
-## Cryptographic commitments
-
-### Appendices A and B
-
-- [SHA-256 commitment](files/Appendices_A_B.tex.sha256)
-- [OpenTimestamps proof](files/Appendices_A_B.tex.ots)
-
-### Main lattice sphere-packing preprint
-
-- [SHA-256 commitment](files/Simkin_Lattice_Sphere_Packing_Preprint.tex.sha256)
-- [OpenTimestamps proof](files/Simkin_Lattice_Sphere_Packing_Preprint.tex.ots)
-
-### Simplified $\kappa=1$ divisor-star construction
-
-- [SHA-256 commitment](files/simplified_kappa_1_divisor_star.tex.sha256)
-- [OpenTimestamps proof](files/simplified_kappa_1_divisor_star.tex.ots)
 
 ## Verification
 
-If the corresponding original source file is available locally, its SHA-256 commitment can be checked with:
+From a project folder, with the original files placed in `sources/`:
 
 ```bash
-sha256sum -c FILE.tex.sha256
+sha256sum -c commitments/SHA256SUMS
+ots upgrade commitments/FILE.tex.ots
+ots verify commitments/FILE.tex.ots -f sources/FILE.tex
 ```
 
-An OpenTimestamps proof can be updated and verified with:
+The `.ots` proof commits to the exact contents of the file, not its name or path.
 
-```bash
-ots upgrade FILE.tex.ots
-ots verify FILE.tex.ots
-```
+## Adding commitments
 
-The `.ots` proof commits to the exact contents of the corresponding source file. OpenTimestamps calendar servers aggregate commitments and anchor them into the Bitcoin blockchain.
-
-The manuscript and appendices may subsequently be modified, reviewed, or developed collaboratively. Later versions can therefore differ from the exact versions represented by these commitment files.
-
-The purpose of this repository is to preserve public, independently verifiable evidence that the corresponding exact file contents existed no later than the timestamps established by these commitments.
+Put new files in `<project>/sources/` and run `./stamp_new_files.sh`. It hashes them, submits new files to the OpenTimestamps calendars, updates the READMEs, commits and pushes. Existing commitments are verified and never replaced; an edited source must be committed under a new filename.
