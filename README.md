@@ -13,6 +13,7 @@ When a source file is revealed later, anyone can check that its contents match t
 
 ## Projects
 
+- [Bombieri's Problem 2](bombieri-problem2/)
 - [Lattice sphere packing](lattice-sphere-packing/)
 
 <!-- END AUTO PROJECT LIST -->
